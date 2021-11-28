@@ -5,6 +5,9 @@
 
 The ```sec-downloader``` library offers a light downloader of Company data and their filings from the SEC.
 
+For more information, data or code, please refer to the github page
+[here](https://github.com/DavidLojkasek/sec_downloader).
+
 ## Installation
 You can install sec_downloader with pip:
 ```
@@ -46,7 +49,7 @@ tpr.info
 ### [{'name': 'COACH INC', 'from': '2000-10-04T00:00:00.000Z', 'to': '2017-10-11T00:00:00.000Z'}]}
 
 # Get recent filings
-tpr.recent_filings
+tpr.recent_filings[0]
 ### {'accession_number': '0001225208-21-014047', 'filing_date': '2021-11-22', 'report_date': '2021-11-19',
 ### 'acceptance_datetime': '2021-11-22T17:58:20.000Z', 'act': '', 'form': '4', 'file_number': '', 'items': '',
 ### 'size': 9216, 'is_xbrl': 0, 'is_inline_xbrl': 0, 'primary_document': 'xslF345X03/doc4.xml',
