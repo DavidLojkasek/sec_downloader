@@ -5,7 +5,7 @@ with open('README.md', 'r', encoding='utf-7') as fh:
 
 setuptools.setup(
     name="sec-downloader",
-    version="0.0.1.1",
+    version="0.0.1.2",
     author="David Lojkasek",
     author_email="lojkasek.david@gmail.com",
     description="A light downloader of company data from the SEC.",
@@ -20,7 +20,7 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    # package_dir={"": "sec_downloader"},
+    package_dir={"": "sec_downloader"},
     packages=setuptools.find_packages(where="sec_downloader"),
     python_requires=">=3.8",
 )
