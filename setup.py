@@ -5,7 +5,7 @@ with open('README.md', 'r', encoding='utf-8') as fh:
 
 setuptools.setup(
     name="sec-downloader",
-    version="0.0.1.3",
+    version="0.0.1.4",
     author="David Lojkasek",
     author_email="lojkasek.david@gmail.com",
     description="A light downloader of company data from the SEC.",

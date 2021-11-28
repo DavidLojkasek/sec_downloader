@@ -8,7 +8,7 @@ The ```sec-downloader``` library offers a light downloader of Company data and t
 ## Installation
 You can install sec_downloader with pip:
 ```
-pip install -i https://test.pypi.org/simple/ sec-downloader==0.0.1.3
+pip install -i https://test.pypi.org/simple/ sec-downloader==0.0.1.4
 ```
 
 ### Requirements
@@ -21,9 +21,9 @@ pip install -i https://test.pypi.org/simple/ sec-downloader==0.0.1.3
 ## How to use
 ### Company module
 ```
-from sec_downloader.company import Company
+import sec_downloader as sec
 
-tpr = Company('TPR')  # or tpr = Company('1116132') or tpr = Company(1116132)
+tpr = sec.Company('TPR')  # or tpr = Company('1116132') or tpr = Company(1116132)
 
 # Get identifiers
 tpr.title
