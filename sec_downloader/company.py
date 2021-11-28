@@ -28,7 +28,11 @@ class Company:
 
     def _find_ticker_cik(self) -> dict:
         data = utils.get_json_data(CIK_TICKER_MAP_URL)
-        data = utils.retrieve_identifiers_from_json(data, self.identifier)
+        data = {self.identifier: {
+            'cik': str(data[c].get('cik_str')),
+            'ticker': data[c].get('ticker'),
+            'title': data[c].get('title')
+        } for c in data if str(data[c].get('cik_str')) == self.identifier or data[c].get('ticker') == self.identifier}
 
         return data
 

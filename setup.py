@@ -1,11 +1,11 @@
 import setuptools
 
-with open('README.md', 'r', encoding='utf-7') as fh:
+with open('README.md', 'r', encoding='utf-8') as fh:
     long_description = fh.read()
 
 setuptools.setup(
     name="sec-downloader",
-    version="0.0.1.2",
+    version="0.0.1.3",
     author="David Lojkasek",
     author_email="lojkasek.david@gmail.com",
     description="A light downloader of company data from the SEC.",

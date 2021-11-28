@@ -22,23 +22,6 @@ def get_json_data(url: str) -> dict:
     return data
 
 
-def retrieve_identifiers_from_json(data: dict, identifier: str) -> dict:
-    """Retrieves the CIK, ticker and title of the company from the bulk data downloaded with the 'get_json_data' fcn.
-
-    :param data: A dict mapping the CIK and ticker downloaded from the SEC.
-    :param identifier: Either the CIK or ticker.
-    :return: A dict with the company's identifiers with the SEC.
-    """
-    if identifier.isdecimal():
-        data = {identifier: {'cik': str(data[c].get('cik_str')), 'ticker': data[c].get('ticker'),
-                             'title': data[c].get('title')} for c in data if str(data[c].get('cik_str')) == identifier}
-    else:
-        data = {identifier: {'cik': str(data[c].get('cik_str')), 'ticker': data[c].get('ticker'),
-                             'title': data[c].get('title')} for c in data if data[c].get('ticker') == identifier}
-
-    return data
-
-
 def transform_recent_filings(data: dict) -> dict:
     """Transforms the recent filings data from the SEC format to a more comprehensive data format.
 
