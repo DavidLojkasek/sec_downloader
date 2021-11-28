@@ -2,6 +2,7 @@
 <table border=1 cellpadding="10"><tr><td>
     <p style="text-align:center;"><strong>*THIS IS NOT AN OFFICIAL LIBRARY BY THE SEC*</strong></p>
 </td></tr></table>
+
 The ```sec-downloader``` library offers a light downloader of Company data and their filings from the SEC.
 
 ## Installation
