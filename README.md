@@ -23,7 +23,7 @@ pip install -i https://test.pypi.org/simple/ sec-downloader==0.0.1.4
 ```
 import sec_downloader as sec
 
-tpr = sec.Company('TPR')  # or tpr = Company('1116132') or tpr = Company(1116132)
+tpr = sec.Company('TPR')  # or tpr = sec.Company('1116132') or tpr = sec.Company(1116132)
 
 # Get identifiers
 tpr.title
