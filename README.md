@@ -1,13 +1,10 @@
 # Download company and filing data from the SEC
-<table border="2">
-    <p style="text-align:center;"><strong>*THIS IS NOT AN OFFICIAL LIBRARY BY THE SEC*</strong></p>
-</table>
+<p style="text-align:center;"><strong>*THIS IS NOT AN OFFICIAL LIBRARY BY THE SEC*</strong></p>
+
 
 The ```sec-downloader``` library offers a light downloader of Company data and their filings from the SEC.
 
 ## Installation
-
----
 
 You can install sec_downloader with pip:
 ```
@@ -25,8 +22,6 @@ pip install sec-downloader
 
 ## Quick Start
 
----
-
 ### Company module
 
 ### Filing module
@@ -35,8 +30,6 @@ The filing module is currently <strong><i>unavailable</i></strong> but should be
 module should then be used to download data for individual forms filed with the SEC.
 
 ## License
-
----
 
 <strong>MIT License</strong>
 
@@ -57,7 +50,6 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 
 ## Author
 
----
 Let me know if you have any questions or feedback!!!
 
 David Lojkasek, 2021<br>

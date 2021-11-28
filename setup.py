@@ -11,15 +11,15 @@ setuptools.setup(
     description="A light downloader of company data from the SEC.",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    # url="https://github.com/pypa/sampleproject",
-    # project_urls={
-    #     "Bug Tracker": "https://github.com/pypa/sampleproject/issues",
-    # },
-    # classifiers=[
-    #     "Programming Language :: Python :: 3",
-    #     "License :: OSI Approved :: MIT License",
-    #     "Operating System :: OS Independent",
-    # ],
+    url="https://github.com/DavidLojkasek/sec_downloader",
+    project_urls={
+        "Bug Tracker": "https://github.com/DavidLojkasek/sec_downloader/issues",
+    },
+    classifiers=[
+        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: MIT License",
+        "Operating System :: OS Independent",
+    ],
     package_dir={"": "sec_downloader"},
     packages=setuptools.find_packages(where="sec_downloader"),
     python_requires=">=3.8",
