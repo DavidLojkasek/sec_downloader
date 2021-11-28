@@ -8,7 +8,7 @@ The ```sec-downloader``` library offers a light downloader of Company data and t
 ## Installation
 You can install sec_downloader with pip:
 ```
-pip install -i https://test.pypi.org/simple/ sec-downloader==0.0.1.1
+pip install -i https://test.pypi.org/simple/ sec-downloader==0.0.1.3
 ```
 
 ### Requirements
