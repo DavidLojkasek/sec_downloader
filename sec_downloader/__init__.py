@@ -5,3 +5,4 @@ Copyright (c) 2021 David Lojkasek (lojkasek.david@gmail.com)
 """
 
 from .company import Company
+from .filing import Filing

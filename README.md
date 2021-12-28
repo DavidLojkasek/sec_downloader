@@ -11,14 +11,16 @@ For more information, data or code, please refer to the github page
 ## Installation
 You can install sec_downloader with pip:
 ```
-pip install -i https://test.pypi.org/simple/ sec-downloader==0.0.1.4
+pip install -i https://test.pypi.org/simple/ sec-downloader==1.0.0.0
 ```
 
 ### Requirements
+* beautifulsoup4==4.10.0
 * certifi==2021.10.8
 * charset-normalizer==2.0.8
 * idna==3.3
 * requests==2.26.0
+* soupsieve==2.3.1
 * urllib3==1.26.7
 
 ## How to use
@@ -57,8 +59,31 @@ tpr.recent_filings[0]
 ```
 
 ### Filing module
-The filing module is currently <strong><i>unavailable</i></strong> but should be included in the next update. This
-module should then be used to download data for individual forms filed with the SEC.
+```
+import sec_downloader as sec
+
+tpr_filing = sec.Filing('0001225208-21-014047')
+
+# Get identifiers
+tpr_filing.accession_number
+tpr_filing.cik
+tpr_filing.url
+
+### '0001225208-21-014047'
+### '0001225208'
+### 'https://www.sec.gov/Archives/edgar/data/0001225208/000122520821014047/0001225208-21-014047-index.htm'
+
+# Get files
+tpr_filing.files
+
+### {0: {'Seq': '1', 'Description': '', 'Document':
+### 'https://www.sec.gov//Archives/edgar/data/1116132/000122520821014047/xslF345X03/doc4.xml', 'Type': '4', 'Size':
+### '\xa0'}, 1: {'Seq': '1', 'Description': '', 'Document':
+### 'https://www.sec.gov//Archives/edgar/data/1116132/000122520821014047/doc4.xml', 'Type': '4', 'Size': '7885'}, 2:
+### {'Seq': '\xa0', 'Description': 'Complete submission text file', 'Document':
+### 'https://www.sec.gov//Archives/edgar/data/1116132/000122520821014047/0001225208-21-014047.txt', 'Type': '\xa0',
+### 'Size': '9216'}}
+```
 
 ## License
 <strong>MIT License</strong>

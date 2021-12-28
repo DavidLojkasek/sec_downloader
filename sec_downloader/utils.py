@@ -6,19 +6,37 @@ Copyright (c) 2021 David Lojkasek (lojkasek.david@gmail.com)
 import requests
 import json
 
-USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) ' \
-             'Chrome/93.0.4577.82 Safari/537.36'
+from . import constants as _constants
+
+USER_AGENT = _constants.USER_AGENT
+
+
+def get_page_contents(url: str) -> bytes:
+    """ Returns the contents of the html page.
+
+    :param url: The requested url.
+    :type url: str.
+    :return: Page contents.
+    :rtype: bytes.
+    """
+    session = requests.session()
+    page_contents = session.get(url, headers={'User-Agent': USER_AGENT}).content
+
+    return page_contents
 
 
 def get_json_data(url: str) -> dict:
     """Downloads data in a json format.
 
     :param url: URL address of the source.
+    :type url: str.
     :return: A dictionary of data from source.
+    :rtype: dict.
     """
     session = requests.session()
     data = session.get(url, headers={'User-Agent': USER_AGENT})
     data = json.loads(data.content)
+
     return data
 
 
@@ -26,7 +44,9 @@ def transform_recent_filings(data: dict) -> dict:
     """Transforms the recent filings data from the SEC format to a more comprehensive data format.
 
     :param data: Data including the recent filings.
+    :type data: dict.
     :return: A dictionary of the recent filings data by the company.
+    :rtype: dict.
     """
     filings = {}
     for count, filing in enumerate(data.get('accessionNumber')):
@@ -47,3 +67,22 @@ def transform_recent_filings(data: dict) -> dict:
         }
 
     return filings
+
+
+def get_single_company_identifiers(data: dict, identifier: str) -> dict:
+    """Retrieves the three identifiers (CIK, ticker, title) of a single company.
+
+    :param data: The dictionary mapping CIKs with tickers and title from the SEC.
+    :type data: dict.
+    :param identifier: The identifier passed by the user when constructing the object.
+    :type identifier: str.
+    :return: A dictionary with the identifiers.
+    :rtype: dict.
+    """
+    data = {identifier: {
+        'cik': str(data[c].get('cik_str')),
+        'ticker': data[c].get('ticker'),
+        'title': data[c].get('title')
+    } for c in data if str(data[c].get('cik_str')) == identifier or data[c].get('ticker') == identifier}
+
+    return data
