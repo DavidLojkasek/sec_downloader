@@ -6,9 +6,7 @@ Copyright (c) 2021 David Lojkasek (lojkasek.david@gmail.com)
 from bs4 import BeautifulSoup
 
 from . import utils as _utils
-from . import constants as _constants
 
-CIK_TICKER_MAP_URL = _constants.CIK_TICKER_MAP_URL
 filing_page_url = 'https://www.sec.gov/Archives/edgar/data/{}/{}/{}'
 
 
@@ -36,15 +34,25 @@ class Filing:
             self.accession_number.replace('-', ''),
             self.accession_number + '-index.htm'
         )
+        self.form_type = _utils.get_form_type(self.url)
+
         self._files = None
 
     def __repr__(self):
         return 'sec-downloader.Filing object(' + self.accession_number + ')'
 
-    def _get_files(self):
+    def _get_files(self) -> dict:
+        """Retrieves the data from the table listing the files associated with the filing.
+
+        This method is automatically called when the user calls :instance_attribute:'Filing.files' and
+        :instances_attribute:'Filing._files is None.
+
+        :return: A dict of data of the files associated with the filing.
+        :rtype: dict.
+        """
         filing_page = _utils.get_page_contents(self.url)
         soup = BeautifulSoup(filing_page, 'html.parser')
-        table = soup.find('table')
+        table = soup.find('table', {'summary': 'Document Format Files'})
         headers = [header.text for header in table.find_all('th')]
         files = {i: {headers[j]: cell.text if j != 2 else 'https://www.sec.gov/' + cell.find('a', href=True)['href']
                      for j, cell in enumerate(row.find_all('td'))}
@@ -54,6 +62,11 @@ class Filing:
 
     @property
     def files(self):
+        """Returns a dict of files associated with the filing and their data.
+
+        :return: A dict of files and their data.
+        :rtype: dict.
+        """
         if self._files is None:
             self._files = self._get_files()
 

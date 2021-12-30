@@ -11,7 +11,7 @@ For more information, data or code, please refer to the github page
 ## Installation
 You can install sec_downloader with pip:
 ```
-pip install -i https://test.pypi.org/simple/ sec-downloader==1.0.0.0
+pip install -i https://test.pypi.org/simple/ sec-downloader==1.0.0.1
 ```
 
 ### Requirements
@@ -68,10 +68,12 @@ tpr_filing = sec.Filing('0001225208-21-014047')
 tpr_filing.accession_number
 tpr_filing.cik
 tpr_filing.url
+tpr_filing.form_type
 
 ### '0001225208-21-014047'
 ### '0001225208'
 ### 'https://www.sec.gov/Archives/edgar/data/0001225208/000122520821014047/0001225208-21-014047-index.htm'
+### 'Form 4 - Statement of changes in beneficial ownership of securities'
 
 # Get files
 tpr_filing.files

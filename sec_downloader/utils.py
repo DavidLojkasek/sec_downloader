@@ -5,6 +5,7 @@ Copyright (c) 2021 David Lojkasek (lojkasek.david@gmail.com)
 """
 import requests
 import json
+from bs4 import BeautifulSoup
 
 from . import constants as _constants
 
@@ -86,3 +87,18 @@ def get_single_company_identifiers(data: dict, identifier: str) -> dict:
     } for c in data if str(data[c].get('cik_str')) == identifier or data[c].get('ticker') == identifier}
 
     return data
+
+
+def get_form_type(url: str):
+    """Retrieves the form type from the filing page.
+
+    :param url: The url of the filing page.
+    :type url: str.
+    :return: A string including the form type and description.
+    :rtype: str.
+    """
+    filing_page = get_page_contents(url)
+    soup = BeautifulSoup(filing_page, 'html.parser')
+    form_type = soup.find('div', {'id': 'formName'}).text.strip()[:-1]  # Get rid of whitespace and the ':'.
+
+    return form_type
